@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🍽️ Paladar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #212121;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        header {
+            padding: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header h1 {
+            margin-bottom: 0.5rem;
+        }
+
+        header h2 {
+            margin-top: 0.5rem;
+        }
+
+        h1,
+        h2 {
+            color: #f5f5f5;
+        }
+
+        form {
+            background: #181818;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(102, 102, 102, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input[type="text"] {
+            padding: 0.5rem;
+            font-size: 1rem;
+            width: 250px;
+            border: 0;
+            border-radius: 8px;
+        }
+
+        button {
+            padding: 0.5rem 1rem;
+            margin: 0.5rem 0 0 0;
+            background: #27ae60;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+
+
+        button:hover {
+            background: #1f8f4e;
+        }
+
+        ul {
+            width: 330px;
+            margin-top: 2rem;
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background: #fff;
+            margin-bottom: 0.5rem;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Paladar</h1>
+        <h2>Recomendações de Restaurante</h2>
+    </header>
+
+    <form method="post" action="/recommend">
+        <input type="text" name="name" placeholder="Digite seu nome" required />
+        <br />
+        <button type="submit">Pesquisar</button>
+    </form>
+
+    {% if recommentations is not none %}
+    {% if recommendations %}
+
+    <ul>
+        <h2>Restaurantes para {{ name }}:</h2>
+        {% for item in recommendations %}
+        <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>⚠️ Nenhuma recomendação encontrada.</p>
+    {% endif %}
+    {% endif %}
+
+</body>
